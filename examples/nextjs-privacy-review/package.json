@@ -1,0 +1,36 @@
+{
+  "name": "nextjs-privacy-review",
+  "version": "1.0.0",
+  "description": "Privacy Contract Review Platform - Next.js Example with FHEVM SDK",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "lint": "next lint",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "deploy:local": "hardhat run scripts/deploy.js --network hardhat"
+  },
+  "dependencies": {
+    "@fhevm/sdk": "workspace:*",
+    "next": "^14.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "ethers": "^6.11.1",
+    "fhevmjs": "^0.5.0"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@fhevm/solidity": "^0.5.0",
+    "hardhat": "^2.20.1",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.3.3",
+    "@types/react": "^18.2.48",
+    "@types/node": "^20.11.0",
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1"
+  }
+}
