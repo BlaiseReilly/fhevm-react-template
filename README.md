@@ -704,7 +704,7 @@ const decrypted = await client.userDecrypt(params);
 
 ## 🎬 Video Demo
 
-**[Watch the complete demo video](./demo.mp4)**
+**[Watch the complete demo.mp4]**
 
 The demo covers:
 1. **Installation** - Setting up the SDK in a new project
