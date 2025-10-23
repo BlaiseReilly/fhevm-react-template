@@ -13,7 +13,9 @@
 
 ## 📺 Demo Video
 
-**[Watch Demo Video](./demo.mp4)** - Complete setup and integration walkthrough
+**Download `demo.mp4` from repository** - Complete setup and integration walkthrough
+
+**Note**: The demo video must be downloaded from the repository to view. Direct streaming links are not available.
 
 ---
 
@@ -710,10 +712,12 @@ The demo covers:
 ### Live Deployments
 
 **Privacy Contract Review Platform:**
+- **GitHub Repository**: [https://github.com/BlaiseReilly/fhevm-react-template](https://github.com/BlaiseReilly/fhevm-react-template)
+- **Live Demo**: [https://fhe-contract-review.vercel.app/](https://fhe-contract-review.vercel.app/)
 - **Contract Address**: `0x5A042B49224ae2d67d5F216DC9A243F6603848F1`
-- **Network**: Sepolia Testnet
+- **Network**: Sepolia Testnet (Chain ID: 11155111)
 - **Etherscan**: [View Contract](https://sepolia.etherscan.io/address/0x5A042B49224ae2d67d5F216DC9A243F6603848F1)
-- **Frontend**: [Demo App](https://fhevm-privacy-review.vercel.app) *(example URL)*
+- **Demo Video**: Download `demo.mp4` from repository (streaming not available)
 
 ### Deploy Your Own
 
