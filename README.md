@@ -530,10 +530,18 @@ const { decrypt, reencrypt, isReady } = useDecrypt();
 
 ## 📚 Documentation
 
-- **[Getting Started](./docs/getting-started.md)** - Installation and setup
-- **[API Reference](./docs/api-reference.md)** - Complete API documentation
-- **[Examples](./docs/examples.md)** - Code examples and tutorials
-- **[Migration Guide](./docs/migration-guide.md)** - Migrate from fhevm-react-template
+Complete documentation is available in the `docs/` folder:
+
+- **[Getting Started](./docs/getting-started.md)** - Installation and quick setup guide
+- **[API Reference](./docs/api-reference.md)** - Complete API documentation with examples
+- **[Examples](./docs/examples.md)** - Code examples and tutorials for all frameworks
+- **[Migration Guide](./docs/migration-guide.md)** - Migrate from fhevm-react-template to Universal SDK
+
+### Live Resources
+
+- **GitHub Repository**: [https://github.com/BlaiseReilly/fhevm-react-template](https://github.com/BlaiseReilly/fhevm-react-template)
+- **Demo Application**: [https://fhe-contract-review.vercel.app/](https://fhe-contract-review.vercel.app/)
+- **Demo Video**: Download `demo.mp4` from repository (streaming not available)
 
 ---
 
