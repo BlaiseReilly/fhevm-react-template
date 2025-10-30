@@ -1,0 +1,31 @@
+{
+  "name": "nodejs-cli-example",
+  "version": "1.0.0",
+  "description": "Node.js CLI example for FHEVM Universal SDK",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "encrypt": "node src/commands/encrypt.js",
+    "decrypt": "node src/commands/decrypt.js",
+    "interact": "node src/commands/interact.js"
+  },
+  "keywords": [
+    "fhevm",
+    "fhe",
+    "encryption",
+    "cli",
+    "zama",
+    "blockchain"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@fhevm/sdk": "file:../../packages/fhevm-sdk",
+    "ethers": "^6.7.1",
+    "dotenv": "^16.3.1",
+    "commander": "^11.1.0",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.1"
+  }
+}
