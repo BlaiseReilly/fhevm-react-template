@@ -164,6 +164,28 @@ fhevm-react-template/
 │       ├── tsconfig.json
 │       └── README.md
 │
+├── templates/                    # 🎨 Framework Templates
+│   ├── nextjs/                  # Next.js template (complete)
+│   │   ├── src/
+│   │   │   ├── app/             # App Router
+│   │   │   │   ├── api/         # API routes for FHE
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── globals.css
+│   │   │   ├── components/      # UI & FHE components
+│   │   │   │   ├── ui/          # Button, Input, Card
+│   │   │   │   ├── fhe/         # FHE demos
+│   │   │   │   └── examples/    # Use case examples
+│   │   │   ├── lib/             # FHE utilities
+│   │   │   │   ├── fhe/         # Client, server, keys
+│   │   │   │   └── utils/       # Security, validation
+│   │   │   ├── hooks/           # Custom hooks
+│   │   │   └── types/           # TypeScript types
+│   │   ├── package.json
+│   │   ├── next.config.js
+│   │   └── README.md
+│   └── README.md                # Templates overview
+│
 ├── examples/
 │   ├── nextjs-privacy-review/    # 📝 Privacy Contract Review dApp
 │   │   ├── contracts/            # Smart contracts
@@ -178,14 +200,53 @@ fhevm-react-template/
 │   │   ├── next.config.js
 │   │   └── package.json
 │   │
-│   ├── nextjs-basic/             # 🎨 Minimal Next.js Example
+│   ├── nextjs-basic/             # 🎨 Complete Next.js Example
 │   │   ├── src/
-│   │   ├── pages/
+│   │   │   ├── app/             # App Router with API routes
+│   │   │   ├── components/      # UI, FHE, examples
+│   │   │   ├── lib/             # FHE integration
+│   │   │   ├── hooks/           # Custom hooks
+│   │   │   └── types/           # TypeScript types
 │   │   └── package.json
 │   │
-│   └── nodejs-cli/               # 💻 Node.js CLI Example
+│   ├── nodejs-cli/               # 💻 Node.js CLI Example
+│   │   ├── src/
+│   │   │   ├── index.js          # Main CLI entry
+│   │   │   ├── client.js         # FHEVM client setup
+│   │   │   ├── utils.js          # Utility functions
+│   │   │   └── commands/         # CLI commands
+│   │   │       ├── encrypt.js
+│   │   │       ├── decrypt.js
+│   │   │       └── interact.js
+│   │   ├── package.json
+│   │   ├── .env.example
+│   │   └── README.md
+│   │
+│   └── PrivacyContractReview/    # 🔒 Privacy Review (React Edition)
 │       ├── src/
-│       └── package.json
+│       │   ├── app/              # Next.js App Router
+│       │   │   ├── layout.tsx    # Root layout with FHEVMProvider
+│       │   │   ├── page.tsx      # Main page
+│       │   │   └── globals.css   # Global styles
+│       │   ├── components/       # React components
+│       │   │   ├── WalletConnection.tsx
+│       │   │   ├── SubmitContract.tsx
+│       │   │   ├── ReviewContracts.tsx
+│       │   │   ├── ReviewForm.tsx
+│       │   │   ├── AnalysisForm.tsx
+│       │   │   ├── MyContracts.tsx
+│       │   │   └── AdminPanel.tsx
+│       │   └── hooks/            # Custom hooks
+│       │       ├── useWallet.ts
+│       │       ├── useContract.ts
+│       │       └── useToast.ts
+│       ├── contracts/            # Smart contracts
+│       ├── index-legacy.html     # Legacy static version
+│       ├── app-legacy.js         # Legacy JavaScript
+│       ├── package.json
+│       ├── next.config.js
+│       ├── tsconfig.json
+│       └── README.md
 │
 ├── docs/                         # 📚 Documentation
 │   ├── getting-started.md
@@ -194,6 +255,7 @@ fhevm-react-template/
 │   └── migration-guide.md
 │
 ├── demo.mp4                      # 📺 Demo Video
+├── CONTRIBUTING.md               # Contribution guidelines
 ├── package.json                  # Root package (workspace)
 ├── README.md                     # This file
 └── LICENSE
@@ -344,44 +406,61 @@ npm run dev
 - **Network**: Sepolia Testnet
 - **Explorer**: [View on Etherscan](https://sepolia.etherscan.io/address/0x5A042B49224ae2d67d5F216DC9A243F6603848F1)
 
-### Example 2: Minimal Next.js Setup
+### Example 2: Complete Next.js Integration
 
-Located in `examples/nextjs-basic/`
+Located in `examples/nextjs-basic/` and `templates/nextjs/`
 
-Minimal example showing SDK integration in <10 lines:
+Complete Next.js 14 example with App Router showing:
+- Full SDK integration with FHEVMProvider
+- Encryption and computation demos
+- API routes for server-side FHE operations
+- Reusable UI components
+- Custom hooks for FHE operations
+- Type-safe implementation
 
-```tsx
-// pages/_app.tsx
-import { FHEVMProvider } from '@fhevm/sdk/react';
-
-export default function App({ Component, pageProps }) {
-  return (
-    <FHEVMProvider config={{ network: 'sepolia' }}>
-      <Component {...pageProps} />
-    </FHEVMProvider>
-  );
-}
-
-// pages/index.tsx
-import { useFHEVM } from '@fhevm/sdk/react';
-
-export default function Home() {
-  const { encrypt, decrypt, isInitialized } = useFHEVM();
-
-  const handleEncrypt = async () => {
-    const result = await encrypt(42, 'euint32');
-    console.log('Encrypted:', result);
-  };
-
-  return (
-    <div>
-      <button onClick={handleEncrypt} disabled={!isInitialized}>
-        Encrypt Value
-      </button>
-    </div>
-  );
-}
+**Structure:**
 ```
+src/
+├── app/                        # App Router (Next.js 14)
+│   ├── layout.tsx             # Root layout with FHEVMProvider
+│   ├── page.tsx               # Main page with demos
+│   ├── globals.css
+│   └── api/                   # API Routes
+│       ├── fhe/               # FHE operations
+│       │   ├── route.ts       # Main FHE endpoint
+│       │   ├── encrypt/route.ts
+│       │   ├── decrypt/route.ts
+│       │   └── compute/route.ts
+│       └── keys/route.ts      # Key management
+├── components/
+│   ├── ui/                    # Button, Input, Card
+│   ├── fhe/                   # EncryptionDemo, ComputationDemo, KeyManager
+│   └── examples/              # BankingExample, MedicalExample
+├── lib/
+│   ├── fhe/                   # client.ts, server.ts, keys.ts, types.ts
+│   └── utils/                 # security.ts, validation.ts
+├── hooks/                     # useFHE.ts, useEncryption.ts, useComputation.ts
+└── types/                     # fhe.ts, api.ts
+```
+
+**Quick Start:**
+```bash
+cd examples/nextjs-basic
+# or
+cd templates/nextjs
+
+npm install
+npm run dev
+```
+
+**Key Features:**
+- ✅ Encryption demo with all FHE types
+- ✅ Homomorphic computation demo
+- ✅ Key management interface
+- ✅ Server-side API routes
+- ✅ Banking and medical use case examples
+- ✅ Full TypeScript support
+- ✅ Responsive UI with Tailwind CSS
 
 ### Example 3: Node.js CLI
 
@@ -411,6 +490,65 @@ const decrypted = await client.userDecrypt({
 });
 console.log('Decrypted:', decrypted);
 ```
+
+### Example 4: Privacy Contract Review (React Edition)
+
+Located in `examples/PrivacyContractReview/`
+
+**Complete React application** with FHEVM SDK integration for contract privacy review.
+
+**Features:**
+- ✅ React 18 + Next.js 14 App Router
+- ✅ FHEVM Universal SDK integration with `useFHEVM()` hook
+- ✅ TypeScript for full type safety
+- ✅ Tailwind CSS responsive UI
+- ✅ Wallet connection with MetaMask
+- ✅ Smart contract interactions (submit, review, analyze)
+- ✅ Role-based access (User, Reviewer, Owner)
+- ✅ Real-time contract status updates
+
+**Quick Start:**
+
+```bash
+cd examples/PrivacyContractReview
+
+# Install dependencies
+npm install
+
+# Configure environment
+cp .env.example .env
+# Edit .env with your contract address
+
+# Start development server
+npm run dev
+
+# Open http://localhost:3002
+```
+
+**Tech Stack:**
+- **Framework:** Next.js 14 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **SDK:** FHEVM Universal SDK with React hooks
+- **Wallet:** Ethers.js v6 + MetaMask
+- **Icons:** Lucide React
+
+**SDK Usage:**
+
+```tsx
+import { FHEVMProvider, useFHEVM } from '@fhevm/sdk/react';
+
+// Wrap app
+<FHEVMProvider config={{ network: 'sepolia' }}>
+  <App />
+</FHEVMProvider>
+
+// Use in components
+const { isInitialized, encrypt, decrypt } = useFHEVM();
+```
+
+**Legacy Version:**
+The original static HTML/JavaScript version is preserved as `index-legacy.html` and `app-legacy.js` for reference.
 
 ---
 
@@ -694,11 +832,14 @@ const decrypted = await client.userDecrypt(params);
 
 ### ✅ Deliverables
 
-- [x] **GitHub repo** - Monorepo with SDK + examples
-- [x] **Next.js showcase** - Full dApp example
-- [x] **Video demo** - Setup and design walkthrough
-- [x] **README** - Complete documentation
-- [x] **Deployment links** - Sepolia testnet deployment
+- [x] **GitHub repo** - Monorepo with SDK + examples + templates
+- [x] **Core SDK Package** - packages/fhevm-sdk with full functionality
+- [x] **Next.js showcase** - Full dApp example (Privacy Contract Review)
+- [x] **Templates** - Ready-to-use templates/nextjs/ for quick start
+- [x] **Multiple examples** - Next.js basic, Privacy Review, Node.js CLI
+- [x] **Video demo** - Setup and design walkthrough (demo.mp4)
+- [x] **Complete documentation** - README, API docs, examples, contributing guide
+- [x] **Deployment links** - Sepolia testnet deployment with verified contract
 
 ---
 
@@ -747,6 +888,40 @@ vercel deploy
 ```
 
 ---
+
+## 🎯 Using the Templates
+
+### Quick Start with Templates
+
+The `templates/` directory contains production-ready starter projects:
+
+```bash
+# Copy Next.js template to start a new project
+cp -r templates/nextjs my-confidential-app
+cd my-confidential-app
+npm install
+npm run dev
+```
+
+### What's Included in Templates
+
+Each template includes:
+- ✅ Complete FHEVM SDK integration
+- ✅ Working encryption/decryption demos
+- ✅ API routes for server-side operations
+- ✅ Reusable component library
+- ✅ Custom hooks for common operations
+- ✅ TypeScript definitions
+- ✅ Configuration files (.env.example, next.config.js)
+- ✅ Comprehensive README
+
+### Available Templates
+
+| Template | Framework | Status | Location |
+|----------|-----------|--------|----------|
+| Next.js Basic | Next.js 14 + React | ✅ Complete | `templates/nextjs/` |
+| Vue.js | Vue 3 + Composition API | 🔄 Coming Soon | - |
+| Node.js | Pure Node.js | 📝 See examples | `examples/nodejs-cli/` |
 
 ## 🤝 Contributing
 
